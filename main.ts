@@ -1,38 +1,45 @@
 console.log('TS is sourced');
-import { Individual, Individual_class } from './Individual.class';
+import { Individual_class } from './Individual.class';
+import { Parent, Parent_class } from './Parent.class';
+import { Child, Child_class } from './Child.class';
 import * as readline from 'readline';
 
-
-const main = function():void {
-  let parents: Array<Individual_class> = []
+const main = function(): void {
+  let parents: Array<Parent_class> = [];
   let population: number = 100;
+  let goal: string = 'Hyaaaaah';
   // build colony
-  while(population--){
-    parents.push(new Individual('Hyaaaaah'))
+  while (population--) {
+    parents.push(new Parent(goal));
   }
   // sort by best
   parents.sort((a, b) => {
-    if(a.fitness < b.fitness){
+    if (a.fitness > b.fitness) {
       return -1;
     }
-    if(a.fitness > b.fitness){
+    if (a.fitness < b.fitness) {
       return 1;
     }
     return 0;
   });
   let i = parents.length;
-  while(i--){
+  while (i--) {
     parents[i].spill();
   }
 
   console.log('between');
 
   // destroy unfit Individuals
-  let fitOnes: any[] = parents.splice(49, 99);
+  let fitOnes: any[] = parents.slice(0, 49);
 
-  let j = fitOnes.length;
-  while(j--){
-    fitOnes[j].spill();
-  }
-}
+  fitOnes.forEach(fit => {
+    fit.spill();
+  });
+
+  let baby = new Child(goal, fitOnes[0].genes, fitOnes[1].genes);
+  console.log(baby.genes);
+  console.log(fitOnes[0]);
+  console.log(fitOnes[1]);
+  console.log(baby);
+};
 main();
