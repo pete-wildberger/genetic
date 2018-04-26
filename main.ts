@@ -1,7 +1,7 @@
 console.log('TS is sourced');
-import { Individual_class } from './Individual.class';
-import { Parent, Parent_class } from './Parent.class';
-import { Child, Child_class } from './Child.class';
+import { Individual_class } from './classes/Individual.class';
+import { Parent, Parent_class } from './classes/Parent.class';
+import { Child, Child_class } from './classes/Child.class';
 import * as readline from 'readline';
 
 const main = function(): void {
@@ -22,15 +22,11 @@ const main = function(): void {
     }
     return 0;
   });
-  let i = parents.length;
-  while (i--) {
-    parents[i].spill();
-  }
 
   console.log('between');
 
   // destroy unfit Individuals
-  let fitOnes: any[] = parents.slice(0, 49);
+  let fitOnes: Array<Parent_class> = parents.slice(0, 49);
 
   fitOnes.forEach(fit => {
     fit.spill();
