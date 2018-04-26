@@ -7,7 +7,7 @@ export interface Individual_class {
   spill(): void;
 }
 
-export class Individual<Individual_class> {
+export abstract class Individual<Individual_class> {
   public geneLen: number;
   public fitness: number;
   public goal: Array<string>;

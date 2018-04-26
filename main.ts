@@ -5,9 +5,7 @@ import { Child, Child_class } from './classes/Child.class';
 import { App } from './classes/App.class';
 import * as readline from 'readline';
 
-const main = function(): void {
+const main = (function(): void {
   let app = new App('Hyaaaaah', 100);
-  console.log('between');
   app.main();
-};
-main();
+})();

@@ -1,14 +1,14 @@
-import { Individual, Individual_class } from './Individual.class';
+import { Individual, Individual_class } from "./Individual.class";
 
 export interface Child_class extends Individual_class {
   makeGenes(momGenes: Array<string>, dadGenes: Array<string>): Array<string>;
   getRandomInt(min: number, max: number): number;
 }
 
-export class Child extends Individual<Individual_class> {
+export class Child<Child_class> extends Individual<Individual_class> {
   constructor(goal: string, mom: Array<string>, dad: Array<string>) {
     super();
-    this.goal = goal.split('');
+    this.goal = goal.split("");
     this.geneLen = this.goal.length;
     this.genes = this.makeGenes(mom, dad);
     this.fitness = this.checkFitness(this.genes, this.goal);
@@ -18,7 +18,10 @@ export class Child extends Individual<Individual_class> {
     return Math.floor(Math.random() * (max - min + 1)) + min;
   }
 
-  makeGenes = (momGenes: Array<string>, dadGenes: Array<string>): Array<string> => {
+  makeGenes = (
+    momGenes: Array<string>,
+    dadGenes: Array<string>
+  ): Array<string> => {
     let i: number;
     let result: Array<string> = [];
     let positions: Array<number> = [];
