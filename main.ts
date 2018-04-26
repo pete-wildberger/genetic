@@ -4,11 +4,34 @@ import { Parent, Parent_class } from './classes/Parent.class';
 import { Child, Child_class } from './classes/Child.class';
 import * as readline from 'readline';
 
+const create_and_sort_children = function(goal: string, parents: any[] ): Array<Child> {
+  const parents_len: number = parents.length;
+  let children: Array<Child_class> = []
+  for(let i = 0; i < parents_len; i++){
+    if( i + 1 == parents_len ){
+      children.push(new Child(goal, parents[i].genes, parents[0].genes));
+    } else {
+      children.push(new Child(goal, parents[i].genes, parents[i + 1].genes));
+    }
+  }
+  children.sort((a, b) => {
+    if (a.fitness > b.fitness) {
+      return -1;
+    }
+    if (a.fitness < b.fitness) {
+      return 1;
+    }
+    return 0;
+  });
+  return children;
+}
+
 const main = function(): void {
   let parents: Array<Parent_class> = [];
   let population: number = 100;
   let goal: string = 'Hyaaaaah';
   // build colony
+  // create first generation
   while (population--) {
     parents.push(new Parent(goal));
   }
@@ -31,11 +54,9 @@ const main = function(): void {
   fitOnes.forEach(fit => {
     fit.spill();
   });
+  let kids = create_and_sort_children(goal, fitOnes);
 
-  let baby = new Child(goal, fitOnes[0].genes, fitOnes[1].genes);
-  console.log(baby.genes);
-  console.log(fitOnes[0]);
-  console.log(fitOnes[1]);
-  console.log(baby);
+  console.log(kids);
+
 };
 main();
