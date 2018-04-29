@@ -23,7 +23,11 @@ export abstract class Individual<Individual_class> {
     });
     return score;
   }
-
+  randomChar(): string {
+    const possible: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const len = possible.length;
+    return possible.charAt(Math.floor(Math.random() * len));
+  }
   spill() {
     console.log(this.goal, this.geneLen, this.fitness, this.genes);
   }
