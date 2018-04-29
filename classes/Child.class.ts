@@ -2,7 +2,6 @@ import { Individual, Individual_class } from './Individual.class';
 
 export interface Child_class extends Individual_class {
   makeGenes(momGenes: Array<string>, dadGenes: Array<string>, len: number): Array<string>;
-  getRandomInt(min: number, max: number): number;
 }
 
 export class Child<Child_class> extends Individual<Individual_class> {
@@ -14,15 +13,12 @@ export class Child<Child_class> extends Individual<Individual_class> {
     this.fitness = this.checkFitness(this.genes, this.goal);
   }
 
-  getRandomInt(min: number, max: number): number {
-    return Math.floor(Math.random() * (max - min + 1)) + min;
-  }
-
   makeGenes(momGenes: Array<string>, dadGenes: Array<string>, len: number): Array<string> {
     let i: number;
     let result: Array<string> = [];
     let positions: Array<number> = [];
     let exchangeLen: number = Math.floor(len / 2);
+    let mutations: { change: string; place: number } = this.mutation(len);
     // randomly choosing which genes to swap
     while (exchangeLen) {
       let num: number = this.getRandomInt(0, len - 1);
@@ -40,6 +36,7 @@ export class Child<Child_class> extends Individual<Individual_class> {
         result[i] = momGenes[i];
       }
     }
+    result[mutations.place] = mutations.change;
     return result;
   }
 }
