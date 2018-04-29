@@ -1,5 +1,5 @@
-import { Child, Child_class } from "./Child.class";
-import { Parent, Parent_class } from "./Parent.class";
+import { Child, Child_class } from './Child.class';
+import { Parent, Parent_class } from './Parent.class';
 
 export class App {
   public population: number;
@@ -12,18 +12,26 @@ export class App {
   }
 
   main = (): void => {
-    let gen_1 = this.run_generation(this.goal, this.parents, this.population);
-    let gen_2 = this.run_generation(this.goal, gen_1, this.population);
-    let gen_3 = this.run_generation(this.goal, gen_2, this.population);
-    let gen_4 = this.run_generation(this.goal, gen_3, this.population);
-    console.log(gen_4.length);
-    console.log(gen_4);
+    this.run(this.goal, this.parents, this.population);
   };
 
-  create_first_generation(
-    goal: string,
-    population: number
-  ): Array<Parent_class> {
+  run = (goal: string, start: Array<Parent_class>, pop: number) => {
+    let counter: number = 0;
+    let done: number = 0;
+    let current_gen: any[] = this.run_generation(goal, start, pop);
+    while (done === 0) {
+      console.log(goal);
+      console.log(current_gen[0]);
+      if (current_gen[0].fitness === goal.length) {
+        done = 1;
+      } else {
+        current_gen = this.run_generation(goal, current_gen, pop);
+        counter++;
+      }
+    }
+    console.log(counter);
+  };
+  create_first_generation(goal: string, population: number): Array<Parent_class> {
     let parents: Array<Parent_class> = [];
     // build colony
     // create first generation
