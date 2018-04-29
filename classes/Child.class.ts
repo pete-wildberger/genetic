@@ -14,11 +14,11 @@ export class Child<Child_class> extends Individual<Individual_class> {
   }
 
   makeGenes(momGenes: Array<string>, dadGenes: Array<string>, len: number): Array<string> {
+    const mutations: { change: string; place: number } = this.mutation(len);
     let i: number;
     let result: Array<string> = [];
     let positions: Array<number> = [];
     let exchangeLen: number = Math.floor(len / 2);
-    let mutations: { change: string; place: number } = this.mutation(len);
     // randomly choosing which genes to swap
     while (exchangeLen) {
       let num: number = this.getRandomInt(0, len - 1);
