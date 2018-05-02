@@ -35,7 +35,7 @@ export abstract class Individual<Individual_class> {
     return { change, place };
   }
   randomChar(): string {
-    const possible: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+    const possible: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ abcdefghijklmnopqrstuvwxyz0123456789';
     const len = possible.length;
     return possible.charAt(Math.floor(Math.random() * len));
   }
