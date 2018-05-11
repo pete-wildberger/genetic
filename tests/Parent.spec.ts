@@ -12,6 +12,12 @@ describe('Parent Class', () => {
     expect(parent.goal).to.be.an('array');
     expect(parent.geneLen).to.equal(parent.goal.length);
   });
+  it('Parent.startGenes(len) should return a string array', () => {
+    let len: number = 8;
+    let genes: string[] = parent.startGenes(len);
+    expect(genes).to.be.an('array');
+    expect(genes).to.have.lengthOf(len);
+  });
 });
 
 // Individual class tests
