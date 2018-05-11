@@ -14,25 +14,20 @@ describe('Parent Class', () => {
   });
 });
 
-describe('Individual.getRandomInt', () => {
-  it('should return number between min and max', () => {
+// Individual class tests
+describe('Individual Class', () => {
+  it('this.getRandomInt should return number between min and max', () => {
     const max: number = 16;
     const min: number = 4;
     const rando = parent.getRandomInt(min, max);
     expect(rando).to.be.below(max);
     expect(rando).to.be.at.least(min);
   });
-});
-
-describe('Individual.randomChar()', () => {
-  it('should return a char from the possible string', () => {
+  it('this.randomChar() should return a char from the possible string', () => {
     const rando: string = parent.randomChar();
     expect(possible).to.include(rando);
   });
-});
-
-describe('Individual.mutation()', () => {
-  it('should return an object with change and place properties', () => {
+  it('this.mutation() should return an object with change and place properties', () => {
     const len: number = 8;
     const mutant: { change: string; place: number } = parent.mutation(len);
     expect(mutant).to.have.property('change');
