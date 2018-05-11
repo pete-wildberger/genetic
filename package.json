@@ -4,17 +4,21 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha -r ts-node/register tests/**.ts",
     "start": "node dist/main.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@types/chai": "^4.1.3",
     "@types/expect": "^1.20.3",
     "@types/mocha": "^5.2.0",
     "@types/node": "^9.6.2",
     "@types/readline-sync": "^1.4.3",
+    "chai": "^4.1.2",
+    "mocha": "^5.1.1",
     "readline-sync": "^1.4.9",
-    "ts-mocha": "^1.2.0"
+    "ts-mocha": "^1.2.0",
+    "typescript": "^2.8.3"
   }
 }
