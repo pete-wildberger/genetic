@@ -16,6 +16,7 @@
     "@types/node": "^9.6.2",
     "@types/readline-sync": "^1.4.3",
     "chai": "^4.1.2",
+    "chai-sorted": "^0.2.0",
     "mocha": "^5.1.1",
     "readline-sync": "^1.4.9",
     "ts-mocha": "^1.2.0",
