@@ -22,11 +22,18 @@ describe('Parent Class', () => {
 
 // Individual class tests
 describe('Individual Class', () => {
+  it('this.checkFitness(genes, goal): number should return the correct fitness score', () => {
+    const genes1: string[] = ['H', 'e', 'l', 'l', 'o', ' ', 'W', 'o', 'r', 'l', 'd'];
+    const genes2: string[] = ['H', 'a', '5', 'c', '3', '3', 'g', '5', 'b', 'f', 'a'];
+    const hello: string[] = genes1;
+    expect(parent.checkFitness(genes1, hello)).to.equal(genes1.length);
+    expect(parent.checkFitness(genes2, hello)).to.equal(1);
+  });
   it('this.getRandomInt should return number between min and max', () => {
     const max: number = 16;
     const min: number = 4;
     const rando = parent.getRandomInt(min, max);
-    expect(rando).to.be.below(max);
+    expect(rando).to.be.at.most(max);
     expect(rando).to.be.at.least(min);
   });
   it('this.randomChar() should return a char from the possible string', () => {
