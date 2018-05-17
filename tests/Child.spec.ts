@@ -8,6 +8,6 @@ const child:Child_class = new Child(goal, mom, dad);
 
 describe('Child Class', () => {
   it('Child.makeGenes() should create a proper genes', () => {
-
+    expect(child.genes.length).to.equal(goal.length);
   });
 });
