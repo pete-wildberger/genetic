@@ -10,8 +10,11 @@ chai.use(sorted);
 const pop:number  = 100;
 const goal:string = 'Hello World';
 const app:App = new App(goal, pop);
+
 describe('App Class', () => {
   it('App.create_first_generation() should create a properly formed population', () => {
-    expect(app.parents).to.be.descendingBy("fitness");
+    const parents = app.parents;
+    expect(parents.length).to.equal(pop);
+    expect(parents).to.be.descendingBy("fitness");
   });
 });
